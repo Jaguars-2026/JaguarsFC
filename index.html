@@ -326,6 +326,52 @@ section{
     box-shadow:0 0 15px rgba(212,175,55,.6);
 }
 
+.mvp-slider{
+    display:flex;
+    gap:25px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding:15px 5px;
+}
+
+.mvp-slider::-webkit-scrollbar{
+    height:10px;
+}
+
+.mvp-slider::-webkit-scrollbar-thumb{
+    background:#d4af37;
+    border-radius:10px;
+}
+
+.mvp-slider::-webkit-scrollbar-track{
+    background:#222;
+}
+
+.mvp-card{
+    min-width:280px;
+    flex:0 0 auto;
+    background:linear-gradient(135deg,#111,#222);
+    border:2px solid gold;
+    border-radius:20px;
+    text-align:center;
+    padding:25px;
+    color:white;
+    box-shadow:0 0 20px rgba(212,175,55,.5);
+    transition:.3s;
+}
+
+.mvp-card:hover{
+    transform:scale(1.05);
+}
+
+.mvp-card img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:15px;
+    border:3px solid gold;
+}	
+	
 </style>
 
 </head>
@@ -699,25 +745,61 @@ TOP SCORERS
 </section>
 
 <section id="MVP">
-    <h2>MVP</h2>
-    <div class="mvp-card">
 
-<img src="flavio.jpg" alt="MVP 6ª Giornata">
+<h2>🏆 MVP DELLE GIORNATE</h2>
 
-<div class="stars">
-★★★★★
-</div>
+<div class="mvp-slider">
 
-<h3>MVP 6ª GIORNATA</h3>
-
-<h4>Flavio Manna</h4>
-
-<p>⚽ Doppietta + Clean Sheet</p>
-
+<div class="mvp-card">
+<img src="giacomo.jpg">
+<div class="stars">★★★★★</div>
+<h3>1ª GIORNATA</h3>
+<h4>⚽ Poker</h4>
 <p>🏆 Man of the Match</p>
-
 </div>
 
+<div class="mvp-card">
+<img src="flavio.jpg">
+<div class="stars">★★★★★</div>
+<h3>2ª GIORNATA</h3>
+<h4>⚽ Doppietta + Tante parate decisive </h4>
+<p>🏆 Man of the Match</p>
+</div>
+
+<div class="mvp-card">
+<img src="giacomo.jpg">
+<div class="stars">★★★★★</div>
+<h3>3ª GIORNATA</h3>
+<h4>⚽ Poker</h4>
+<p>🏆 Man of the Match</p>
+</div>
+
+<div class="mvp-card">
+<img src="flavio.jpg">
+<div class="stars">★★★★★</div>
+<h3>4ª GIORNATA</h3>
+<h4>⚽ Gol Vittoria</h4>
+<p>🏆 Man of the Match</p>
+</div>
+
+<div class="mvp-card">
+<img src="giacomo.jpg">
+<div class="stars">★★★★★</div>
+<h3>5ª GIORNATA</h3>
+<h4>⚽ Gol Vittoria</h4>
+<p>🏆 Man of the Match</p>
+</div>
+
+<div class="mvp-card">
+<img src="flavio.jpg">
+<div class="stars">★★★★★</div>
+<h3>6ª GIORNATA</h3>
+<h4>Flavio Manna</h4>
+<p>⚽ Doppietta + Clean Sheet</p>
+<p>🏆 Man of the Match</p>
+</div>
+
+</div>
 
 </section>
 
