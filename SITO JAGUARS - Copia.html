@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaguars FC</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f8f8f8;
+    color: #333;
+}
+
+header {
+    background: linear-gradient(135deg, #ffffff, #d4af37);
+    color: #222;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 3px solid #b9b9b9;
+}
+
+nav {
+    background: #1f1f1f;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    color: #d4af37;
+    text-decoration: none;
+    margin: 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: white;
+}
+
+section {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+footer {
+    background: linear-gradient(135deg, #d4af37, #ffffff);
+    color: #222;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+button {
+    background: #d4af37;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #b8860b;
+}
+
+
+/* Finestra giocatore */
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+
+.popup-contenuto {
+    background: white;
+    width: 350px;
+    margin: 10% auto;
+    padding: 25px;
+    text-align: center;
+    border-radius: 15px;
+    border: 3px solid #d4af37;
+    box-shadow: 0 0 20px #d4af37;
+}
+
+
+.popup-contenuto img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #d4af37;
+}
+
+
+.chiudi {
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+    color: #d4af37;
+}
+
+.match-card,
+.result-card{
+    background: linear-gradient(135deg, #ffffff, #f8f4e3);
+    border: 2px solid #d4af37;
+    border-left: 8px solid #d4af37;
+    border-radius: 15px;
+    padding: 18px;
+    margin: 20px 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+.match-card:hover,
+.result-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(212,175,55,0.45);
+}
+
+.match-card h3,
+.result-card h3{
+    margin-top: 0;
+    color: #b8860b;
+    text-align: center;
+}
+
+.match-card p,
+.result-card p{
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    overflow:hidden;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+thead{
+    background:#d4af37;
+    color:white;
+}
+
+th{
+    padding:15px;
+    font-size:17px;
+}
+
+td{
+    padding:14px;
+    text-align:center;
+    font-size:16px;
+    border-bottom:1px solid #ddd;
+}
+
+tbody tr:nth-child(even){
+    background:#fafafa;
+}
+
+tbody tr:hover{
+    background:#fff5d6;
+    transition:.3s;
+}
+
+tbody tr:first-child{
+    background:#fff0b3;
+    font-weight:bold;
+}
+
+tbody tr:first-child td{
+    color:#8a6500;
+}
+
+h2{
+    color:#b8860b;
+    text-align:center;
+}
+
+section{
+    animation:fadeIn .7s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.about-box{
+    background: linear-gradient(135deg,#111,#1d1d1d);
+    color:white;
+    border:2px solid #d4af37;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 10px 25px rgba(212,175,55,.35);
+    line-height:1.8;
+}
+
+.about-box h2{
+    color:#d4af37;
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.about-box p{
+    font-size:18px;
+    text-align:justify;
+}
+
+.about-highlight{
+    color:#d4af37;
+    font-weight:bold;
+}
+
+.about-divider{
+    width:120px;
+    height:4px;
+    background:#d4af37;
+    margin:20px auto;
+    border-radius:10px;
+}
+
+.stats-card{
+    background:#fff;
+    border-radius:18px;
+    border:2px solid #d4af37;
+    margin:25px 0;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.stats-header{
+    background:#d4af37;
+    color:white;
+    text-align:center;
+    padding:15px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.player-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    border-bottom:1px solid #ececec;
+    transition:.3s;
+}
+
+.player-row:hover{
+    background:#fff5d6;
+}
+
+.player-name{
+    font-weight:bold;
+}
+
+.player-goals{
+    color:#b8860b;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.mvp-card{
+    background:linear-gradient(135deg,#111,#222);
+    border:2px solid gold;
+    border-radius:20px;
+    text-align:center;
+    padding:30px;
+    margin:25px 0;
+    color:white;
+    box-shadow:0 0 25px rgba(212,175,55,.5);
+}
+
+.mvp-card img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:4px solid gold;
+    margin-bottom:15px;
+}
+
+.mvp-card h3{
+    color:#d4af37;
+    margin:10px;
+}
+
+.mvp-card h4{
+    font-size:26px;
+    margin:10px;
+}
+
+.stars{
+    color:gold;
+    font-size:24px;
+    letter-spacing:5px;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>⚽ Jaguars FC</h1>
+    <p>Benvenuti nel sito ufficiale!</p>
+</header>
+
+<nav>
+    <a href="#chi">Chi siamo</a>
+    <a href="#giocatori">Giocatori</a>
+    <a href="#partite">Partite</a>
+	<a href="#fulltime">Risultati</a>
+	<a href="#Classifica">Classifica</a>
+	<a href="#Marcatori">Marcatori</a>
+	<a href="#MVP">MVP Giornata</a>
+</nav>
+
+<section id="chi">
+    <div class="about-box">
+
+<h2>CHI SIAMO</h2>
+
+<div class="about-divider"></div>
+
+<p>
+I <span class="about-highlight">Jaguars FC</span> sono una squadra di calcio a 5 nata dalla passione, dall'amicizia e dalla voglia di competere ai massimi livelli.
+</p>
+
+<p>
+Ogni allenamento, ogni partita e ogni sacrificio rappresentano un passo verso un unico obiettivo: migliorare insieme.
+</p>
+
+<p>
+Indossare questa maglia significa rappresentare una famiglia fatta di rispetto, sacrificio e determinazione.
+</p>
+
+<p>
+Dentro il campo si combatte su ogni pallone.
+Fuori dal campo si resta una squadra.
+</p>
+
+<div class="about-divider"></div>
+
+<h3 style="text-align:center;color:#d4af37;">
+UNA SQUADRA • UNA FAMIGLIA • UN SOLO OBIETTIVO
+</h3>
+
+</div>
+
+</section>
+
+<section id="giocatori">
+    <h2>Giocatori</h2>
+
+    <ul>
+    <li><button onclick="apriGiocatore('Giacomo Lupo', 'Attaccante', 21, 6, 18, '1+', 2, 'giocatore1.jpg')">Giacomo Lupo</button></li>
+
+    <li><button onclick="apriGiocatore('Giovanni Lamarca', 'Attaccante', 7, 6, 8, '1+', 3, 'giocatore2.jpg')">Giovanni Lamarca</button></li>
+
+    <li><button onclick="apriGiocatore('Danilo Pizzimenti', 'Centrocampista', 9, 5, 2, '1+', 1, 'giocatore3.jpg')">Danilo Pizzimenti</button></li>
+
+    <li><button onclick="apriGiocatore('Flavio Manna', 'Portiere', 22, 6, 13, '1+', 0, 'giocatore4.jpg')">Flavio Manna</button></li>
+
+    <li><button onclick="apriGiocatore('Gabriel Milazzo', 'Portiere/Centrocampista', 14, 6, 1, '1+', 0, 'giocatore5.jpg')">Gabriel Milazzo</button></li>
+
+    <li><button onclick="apriGiocatore('Cristian Lamarca', 'Difensore', 12, 6, 1, 0, 1, 'giocatore6.jpg')">Cristian Lamarca</button></li>
+
+    <li><button onclick="apriGiocatore('Andrea Scaglione', 'Centrocampista', 10, 6, 2, 1, 2, 'giocatore7.jpg')">Andrea Scaglione</button></li>
+
+    <li><button onclick="apriGiocatore('Giuseppe Lamarca', 'Difensore', 26, 6, 0, 1, 1, 'giocatore8.jpg')">Giuseppe Lamarca</button></li>
+
+    <li><button onclick="apriGiocatore('Andrea Mangano', 'Presidente', 4, 2, 2, 0, 0, 'giocatore9.jpg')">Andrea Mangano</button></li>
+</ul>
+
+</section>
+
+
+<!-- Finestra statistiche -->
+<div id="schedaGiocatore" class="popup">
+
+    <div class="popup-contenuto">
+
+        <span class="chiudi" onclick="chiudiGiocatore()">×</span>
+
+        <img id="fotoGiocatore" src="" alt="Giocatore">
+
+        <h2 id="nomeGiocatore"></h2>
+
+        <p><b>Ruolo:</b> <span id="ruolo"></span></p>
+        <p><b>Numero:</b> <span id="numero"></span></p>
+        <p><b>Presenze:</b> <span id="presenze"></span></p>
+        <p><b>Gol:</b> <span id="gol"></span></p>
+        <p><b>Assist:</b> <span id="assist"></span></p>
+        <p><b>Cartellini:</b> <span id="cartellini"></span></p>
+
+    </div>
+
+</div>
+
+
+<script>
+function apriGiocatore(nome, ruolo, numero, presenze, gol, assist, cartellini, foto) {
+
+    document.getElementById("nomeGiocatore").innerHTML = nome;
+    document.getElementById("ruolo").innerHTML = ruolo;
+    document.getElementById("numero").innerHTML = numero;
+    document.getElementById("presenze").innerHTML = presenze;
+    document.getElementById("gol").innerHTML = gol;
+    document.getElementById("assist").innerHTML = assist;
+    document.getElementById("cartellini").innerHTML = cartellini;
+
+    document.getElementById("fotoGiocatore").src = foto;
+
+    document.getElementById("schedaGiocatore").style.display = "block";
+}
+
+
+function chiudiGiocatore() {
+    document.getElementById("schedaGiocatore").style.display = "none";
+}
+</script>
+</section>
+
+<section id="partite">
+    <h2>Prossime partite</h2>
+    <div class="match-card">
+    <h3>7ª Giornata</h3>
+    <p><b>Jaguars FC</b> 🆚 <b>Tigres de Monterrey</b></p>
+    <p>📍 Palermo</p>
+    <p>🕘 Da definire</p>
+</div>
+
+<div class="match-card">
+    <h3>Round of 8</h3>
+    <p><b>Jaguars FC</b> 🆚 <b>Da definire</b></p>
+    <p>📍 Palermo</p>
+    <p>🕘 Da definire </p>
+</div>
+
+
+</section>
+<section id="fulltime">
+    <h2>🏆 Risultati</h2>
+	
+<div class="result-card">
+<h2>6ª GIORNATA</h2>
+<h3>Jaguars FC 10 - 0 Palermo Stars</h3>
+<p>⚽ G.Lupo (3)</p>
+<p>⚽ G.Lamarca (2)</p>
+<p>⚽ G.Milazzo</p>
+<p>⚽ A.Scaglione</p>
+<p>⚽ C.Lamarca</p>
+<p>⚽ F.Manna (2)</p>
+
+</div>
+
+<div class="result-card">
+<h2>5ª GIORNATA</h2>
+<h3>Jaguars FC 7 - 4 Galacticos</h3>
+<p>⚽ G.Lupo (4)</p>
+<p>⚽ G.Lamarca (2)</p>
+<p>⚽ A.Scaglione</p>
+</div>
+
+<div class="result-card">
+<h2>4ª GIORNATA</h2>
+<h3>Jaguars FC 9 - 8 Zeta Palermo</h3>
+<p>⚽ G.Lupo </p>
+<p>⚽ G.Lamarca (2)</p>
+<p>⚽ F.Manna (6)</p>
+</div>
+
+<div class="result-card">
+<h2>3ª GIORNATA</h2>
+<h3>ASD Leda 9 - 6 Jaguars FC</h3>
+<p>⚽ G.Lupo (4)</p>
+<p>⚽ F.Manna </p>
+<p>⚽ (PRES) Mangano</p>
+</div>
+
+<div class="result-card">
+<h2>2ª GIORNATA</h2>
+<h3>Mons VF 5 - 4 Jaguars FC</h3>
+<p>⚽ G.Lupo (2)</p>
+<p>⚽ F.Manna (2)</p>
+</div>
+
+<div class="result-card">
+<h2>1ª GIORNATA</h2>
+<h3>Dictatores 5 - 11 Jaguars FC</h3>
+<p>⚽ G.Lupo (4)</p>
+<p>⚽ G.Lamarca (2)</p>
+<p>⚽ (PRES) Mangano</p>
+<p>⚽ D.Pizzimenti (2)</p>
+<p>⚽ F.Manna (2)</p>
+</div>
+
+</section>
+
+<section id="Classifica">
+    <h2>📊 Classifica</h2>
+
+<table>
+
+<tr>
+<th>#</th>
+<th>Squadra</th>
+<th>Pt</th>
+<th>G</th>
+<th>V</th>
+<th>P</th>
+<th>GF</th>
+<th>GS</th>
+<th>DR</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>ASD Leda</td>
+<td>18</td>
+<td>6</td>
+<td>6</td>
+<td>0</td>
+<td>49</td>
+<td>23</td>
+<td>26</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>Mons VF</td>
+<td>12</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>53</td>
+<td>23</td>
+<td>30</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>Jaguars FC</td>
+<td>12</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>47</td>
+<td>31</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>Tigres de Monterrey</td>
+<td>12</td>
+<td>6</td>
+<td>4</td>
+<td>2</td>
+<td>40</td>
+<td>31</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>Zeta Palermo</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+<td>33</td>
+<td>43</td>
+<td>-10</td>
+</tr>
+
+<tr>
+<td>6</td>
+<td>Galacticos</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+<td>25</td>
+<td>52</td>
+<td>-27</td>
+</tr>
+
+<tr>
+<td>7</td>
+<td>Dictatores</td>
+<td>6</td>
+<td>6</td>
+<td>2</td>
+<td>4</td>
+<td>24</td>
+<td>39</td>
+<td>-15</td>
+</tr>
+
+<tr>
+<td>8</td>
+<td>Palermo Stars</td>
+<td>3</td>
+<td>6</td>
+<td>1</td>
+<td>5</td>
+<td>14</td>
+<td>43</td>
+<td>-29</td>
+</tr>
+
+</table>
+
+</section>
+
+<section id="Marcatori">
+    <h2>⚽ Classifica Marcatori</h2>
+
+<div class="stats-card">
+
+<div class="stats-header">
+TOP SCORERS
+</div>
+
+<div class="player-row">
+<span class="player-name">🥇 Giacomo Lupo</span>
+<span class="player-goals">18 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">🥈 Flavio Manna</span>
+<span class="player-goals">13 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">🥉 Giovanni Lamarca</span>
+<span class="player-goals">8 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">Danilo Pizzimenti</span>
+<span class="player-goals">2 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">Andrea Mangano (PRES)</span>
+<span class="player-goals">2 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">Andrea Scaglione</span>
+<span class="player-goals">2 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">Gabriel Milazzo</span>
+<span class="player-goals">1 ⚽</span>
+</div>
+
+<div class="player-row">
+<span class="player-name">Cristian Lamarca</span>
+<span class="player-goals">1 ⚽</span>
+</div>
+
+</div>
+
+</section>
+
+<section id="MVP">
+    <h2>MVP</h2>
+    <div class="mvp-card">
+
+<img src="mvp6.jpg">
+
+<div class="stars">
+★★★★★
+</div>
+
+<h3>MVP 6ª GIORNATA</h3>
+
+<h4>Flavio Manna</h4>
+
+<p>⚽ Doppietta + Clean Sheet</p>
+
+<p>🏆 Man of the Match</p>
+
+</div>
+
+
+</section>
+
+<footer>
+    © 2026 Jaguars FC
+</footer>
+</body>
+</html>
