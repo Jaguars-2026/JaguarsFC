@@ -521,7 +521,7 @@ UNA SQUADRA • UNA FAMIGLIA • UN SOLO OBIETTIVO
     </div>
 </div>
 
-<div class="player-card" onclick="apriGiocatore('Flavio Manna','Portiere',22,6,13,'1+',0,'manna.jpg')">
+<div class="player-card" onclick="apriGiocatore('Flavio Manna','Portiere',22,6,13,'1+',0,'manna.jpg',1)">
     <img src="manna.jpg">
     <div class="player-info">
         <div class="player-number">22</div>
@@ -531,7 +531,7 @@ UNA SQUADRA • UNA FAMIGLIA • UN SOLO OBIETTIVO
     </div>
 </div>
 
-<div class="player-card" onclick="apriGiocatore('Gabriel Milazzo','Portiere/Centrocampista',14,6,1,'1+',0,'gabry.jpg')">
+<div class="player-card" onclick="apriGiocatore('Gabriel Milazzo','Portiere/Centrocampista',14,6,1,'1+',0,'gabry.jpg',0)">
     <img src="gabry.jpg">
     <div class="player-info">
         <div class="player-number">14</div>
@@ -602,6 +602,9 @@ UNA SQUADRA • UNA FAMIGLIA • UN SOLO OBIETTIVO
         <p><b>Presenze:</b> <span id="presenze"></span></p>
         <p><b>Gol:</b> <span id="gol"></span></p>
         <p><b>Assist:</b> <span id="assist"></span></p>
+		<p id="rigaCleanSheet" style="display:none;">
+    <b>Clean Sheet:</b> <span id="cleanSheet"></span>
+</p>
         <p><b>Cartellini:</b> <span id="cartellini"></span></p>
 
     </div>
@@ -610,7 +613,7 @@ UNA SQUADRA • UNA FAMIGLIA • UN SOLO OBIETTIVO
 
 
 <script>
-function apriGiocatore(nome, ruolo, numero, presenze, gol, assist, cartellini, foto) {
+function apriGiocatore(nome, ruolo, numero, presenze, gol, assist, cartellini, foto, cleanSheet = null) {
 
     document.getElementById("nomeGiocatore").innerHTML = nome;
     document.getElementById("ruolo").innerHTML = ruolo;
@@ -619,8 +622,14 @@ function apriGiocatore(nome, ruolo, numero, presenze, gol, assist, cartellini, f
     document.getElementById("gol").innerHTML = gol;
     document.getElementById("assist").innerHTML = assist;
     document.getElementById("cartellini").innerHTML = cartellini;
-
     document.getElementById("fotoGiocatore").src = foto;
+
+    if (ruolo.includes("Portiere")) {
+        document.getElementById("rigaCleanSheet").style.display = "block";
+        document.getElementById("cleanSheet").innerHTML = cleanSheet;
+    } else {
+        document.getElementById("rigaCleanSheet").style.display = "none";
+    }
 
     document.getElementById("schedaGiocatore").style.display = "block";
 }
