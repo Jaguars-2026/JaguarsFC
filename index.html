@@ -368,6 +368,67 @@ section{
     border-radius:15px;
     border:3px solid gold;
 }	
+
+.players-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:25px;
+}
+
+.player-card{
+    background:linear-gradient(145deg,#111,#1f1f1f);
+    border:2px solid #d4af37;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.35s;
+    text-align:center;
+    color:white;
+    box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+.player-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 15px 35px rgba(212,175,55,.45);
+}
+
+.player-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.player-info{
+    padding:18px;
+}
+
+.player-number{
+    font-size:42px;
+    color:#d4af37;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.player-name{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.player-role{
+    color:#d4af37;
+    margin-top:8px;
+    font-size:16px;
+}
+
+.player-click{
+    margin-top:15px;
+    background:#d4af37;
+    color:black;
+    padding:10px;
+    border-radius:10px;
+    font-weight:bold;
+}
 	
 </style>
 
@@ -425,27 +486,102 @@ UNA SQUADRA • UNA FAMIGLIA • UN SOLO OBIETTIVO
 </section>
 
 <section id="giocatori">
-    <h2>Giocatori</h2>
 
-    <ul>
-    <li><button onclick="apriGiocatore('Giacomo Lupo', 'Attaccante', 21, 6, 18, '1+', 2, 'giak.jpg')">Giacomo Lupo</button></li>
+<h2>⚽ Rosa Jaguars FC</h2>
 
-    <li><button onclick="apriGiocatore('Giovanni Lamarca', 'Attaccante', 7, 6, 8, '1+', 3, 'giovanni.jpg')">Giovanni Lamarca</button></li>
+<div class="players-grid">
 
-    <li><button onclick="apriGiocatore('Danilo Pizzimenti', 'Centrocampista', 9, 5, 2, '1+', 1, 'danilo.jpg')">Danilo Pizzimenti</button></li>
+<div class="player-card" onclick="apriGiocatore('Giacomo Lupo','Attaccante',21,6,18,'1+',2,'giak.jpg')">
+    <img src="giak.jpg">
+    <div class="player-info">
+        <div class="player-number">21</div>
+        <div class="player-name">Giacomo Lupo</div>
+        <div class="player-role">⚽ Attaccante</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
 
-    <li><button onclick="apriGiocatore('Flavio Manna', 'Portiere', 22, 6, 13, '1+', 0, 'manna.jpg')">Flavio Manna</button></li>
+<div class="player-card" onclick="apriGiocatore('Giovanni Lamarca','Attaccante',7,6,8,'1+',3,'giovanni.jpg')">
+    <img src="giovanni.jpg">
+    <div class="player-info">
+        <div class="player-number">7</div>
+        <div class="player-name">Giovanni Lamarca</div>
+        <div class="player-role">⚽ Attaccante</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
 
-    <li><button onclick="apriGiocatore('Gabriel Milazzo', 'Portiere/Centrocampista', 14, 6, 1, '1+', 0, 'gabry.jpg')">Gabriel Milazzo</button></li>
+<div class="player-card" onclick="apriGiocatore('Danilo Pizzimenti','Centrocampista',9,5,2,'1+',1,'danilo.jpg')">
+    <img src="danilo.jpg">
+    <div class="player-info">
+        <div class="player-number">9</div>
+        <div class="player-name">Danilo Pizzimenti</div>
+        <div class="player-role">🎯 Centrocampista</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
 
-    <li><button onclick="apriGiocatore('Cristian Lamarca', 'Difensore', 11, 6, 1, 0, 1, 'cristian3.jpg')">Cristian Lamarca</button></li>
+<div class="player-card" onclick="apriGiocatore('Flavio Manna','Portiere',22,6,13,'1+',0,'manna.jpg')">
+    <img src="manna.jpg">
+    <div class="player-info">
+        <div class="player-number">22</div>
+        <div class="player-name">Flavio Manna</div>
+        <div class="player-role">🧤 Portiere</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
 
-    <li><button onclick="apriGiocatore('Andrea Scaglione', 'Centrocampista', 10, 6, 2, 1, 2, 'andrea.jpg')">Andrea Scaglione</button></li>
+<div class="player-card" onclick="apriGiocatore('Gabriel Milazzo','Portiere/Centrocampista',14,6,1,'1+',0,'gabry.jpg')">
+    <img src="gabry.jpg">
+    <div class="player-info">
+        <div class="player-number">14</div>
+        <div class="player-name">Gabriel Milazzo</div>
+        <div class="player-role">🧤 Portiere</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
 
-    <li><button onclick="apriGiocatore('Giuseppe Lamarca', 'Difensore', 26, 6, 0, 1, 1, 'peppe.jpg')">Giuseppe Lamarca</button></li>
+<div class="player-card" onclick="apriGiocatore('Cristian Lamarca','Difensore',11,6,1,0,1,'cristian3.jpg')">
+    <img src="cristian3.jpg">
+    <div class="player-info">
+        <div class="player-number">11</div>
+        <div class="player-name">Cristian Lamarca</div>
+        <div class="player-role">🛡️ Difensore</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
 
-    <li><button onclick="apriGiocatore('Andrea Mangano', 'Presidente', 4, 2, 2, 0, 0, 'mango.jpg')">Andrea Mangano</button></li>
-</ul>
+<div class="player-card" onclick="apriGiocatore('Andrea Scaglione','Centrocampista',10,6,2,1,2,'andrea.jpg')">
+    <img src="andrea.jpg">
+    <div class="player-info">
+        <div class="player-number">10</div>
+        <div class="player-name">Andrea Scaglione</div>
+        <div class="player-role">🎯 Centrocampista</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
+
+<div class="player-card" onclick="apriGiocatore('Giuseppe Lamarca','Difensore',26,6,0,1,1,'peppe.jpg')">
+    <img src="peppe.jpg">
+    <div class="player-info">
+        <div class="player-number">26</div>
+        <div class="player-name">Giuseppe Lamarca</div>
+        <div class="player-role">🛡️ Difensore</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
+
+<div class="player-card" onclick="apriGiocatore('Andrea Mangano','Presidente',4,2,2,0,0,'mango.jpg')">
+    <img src="mango.jpg">
+    <div class="player-info">
+        <div class="player-number">4</div>
+        <div class="player-name">Andrea Mangano</div>
+        <div class="player-role">👔 Presidente</div>
+        <div class="player-click">Visualizza Statistiche</div>
+    </div>
+</div>
+
+</div>
 
 </section>
 
