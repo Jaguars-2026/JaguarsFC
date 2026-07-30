@@ -571,6 +571,27 @@ section{
     font-weight:700;
     color:white;
 }
+
+.team{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    padding:10px 0;
+}
+
+.team img{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 8px gold);
+}
+
+.team span{
+    color:#fff;
+    font-weight:700;
+    font-size:17px;
+}
 </style>
 
 </head>
@@ -978,7 +999,8 @@ function chiudiGiocatore() {
 
         <h3>QUARTI DI FINALE</h3>
 
-        <div class="match">
+        <!-- QUARTO 1 -->
+<div class="match">
 
     <div class="team">
         <img src="leda.png" alt="ASD Leda">
@@ -993,40 +1015,57 @@ function chiudiGiocatore() {
     </div>
 
 </div>
-    <!-- SEMIFINALI -->
 
-    <div class="round">
+<!-- QUARTO 2 -->
+<div class="match">
 
-        <h3>SEMIFINALI</h3>
-
-        <div class="match semi">
-            <div>VINCENTE Q1</div>
-            <div class="vs">VS</div>
-            <div>VINCENTE Q2</div>
-        </div>
-
-        <div class="match semi">
-            <div>VINCENTE Q3</div>
-            <div class="vs">VS</div>
-            <div>VINCENTE Q4</div>
-        </div>
-
+    <div class="team">
+        <img src="mons.png" alt="Mons VF">
+        <span>MONS VF</span>
     </div>
 
-    <!-- FINALE -->
+    <div class="vs">VS</div>
 
-    <div class="round">
-
-        <h3>FINALE</h3>
-
-        <div class="match final">
-            <div>VINCENTE SF1</div>
-            <div class="vs">VS</div>
-            <div>VINCENTE SF2</div>
-        </div>
-
+    <div class="team">
+        <img src="galacticos.png" alt="Galacticos">
+        <span>GALACTICOS</span>
     </div>
 
+</div>
+
+<!-- QUARTO 3 -->
+<div class="match">
+
+    <div class="team">
+        <img src="jaguars.png" alt="Jaguars FC">
+        <span>JAGUARS FC</span>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="team">
+        <img src="palermo-stars.png" alt="Palermo Stars">
+        <span>PALERMO STARS</span>
+    </div>
+
+</div>
+
+<!-- QUARTO 4 -->
+<div class="match">
+
+    <div class="team">
+        <img src="tigres.png" alt="Tigres de Monterrey">
+        <span>TIGRES DE MONTERREY</span>
+    </div>
+
+    <div class="vs">VS</div>
+
+    <div class="team">
+        <img src="zeta.png" alt="Zeta Palermo">
+        <span>ZETA PALERMO</span>
+    </div>
+
+</div>
 </div>
 
 </section>
