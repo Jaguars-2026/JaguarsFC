@@ -469,6 +469,88 @@ section{
     font-size:18px;
     margin-top:15px;
 }
+
+#playoff{
+    padding:70px 20px;
+    background:#050505;
+}
+
+.playoff-title{
+    text-align:center;
+    color:#fff;
+    font-size:38px;
+    margin-bottom:5px;
+}
+
+.playoff-subtitle{
+    text-align:center;
+    color:#c9a64d;
+    letter-spacing:4px;
+    margin-bottom:50px;
+}
+
+.bracket{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    flex-wrap:wrap;
+}
+
+.round{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.round h3{
+    color:#d6a843;
+    margin-bottom:25px;
+    font-size:22px;
+}
+
+.match{
+    width:300px;
+    background:#111;
+    border:2px solid #c79d39;
+    border-radius:18px;
+    padding:18px;
+    margin:18px 0;
+    color:white;
+    text-align:center;
+    box-shadow:0 0 20px rgba(255,200,0,.18);
+    transition:.3s;
+}
+
+.match:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 35px rgba(255,215,0,.45);
+}
+
+.match div{
+    padding:7px;
+    font-weight:bold;
+}
+
+.vs{
+    display:inline-block;
+    background:linear-gradient(90deg,#f8d46a,#c29118);
+    color:black;
+    padding:8px 24px;
+    border-radius:30px;
+    margin:12px auto;
+    width:70px;
+}
+
+.semi{
+    margin-top:120px;
+}
+
+.final{
+    margin-top:260px;
+    width:330px;
+    border:3px solid gold;
+    box-shadow:0 0 40px gold;
+}
 	
 </style>
 
@@ -867,78 +949,79 @@ function chiudiGiocatore() {
 
 <section id="playoff">
 
-<h2>🏆 TABELLONE PLAYOFF</h2>
+<h2 class="playoff-title">🏆 TABELLONE PLAYOFF</h2>
+<p class="playoff-subtitle">ROAD TO THE FINAL</p>
 
-<h3 style="text-align:center;color:#b8860b;">QUARTI DI FINALE</h3>
+<div class="bracket">
 
-<div class="playoff-grid">
+    <!-- QUARTI -->
+    <div class="round">
 
-<div class="playoff-card">
-<h3>Quarto 1</h3>
-<div class="playoff-match">
-ASD LEDA<br>🆚<br>DICTATORES
-</div>
-<div class="playoff-next">➡️ Semifinale 1</div>
+        <h3>QUARTI DI FINALE</h3>
+
+        <div class="match">
+            <div>ASD LEDA</div>
+            <div class="vs">VS</div>
+            <div>DICTATORES</div>
+        </div>
+
+        <div class="match">
+            <div>MONS VF</div>
+            <div class="vs">VS</div>
+            <div>GALACTICOS</div>
+        </div>
+
+        <div class="match">
+            <div>JAGUARS FC</div>
+            <div class="vs">VS</div>
+            <div>PALERMO STARS</div>
+        </div>
+
+        <div class="match">
+            <div>TIGRES DE MONTERREY</div>
+            <div class="vs">VS</div>
+            <div>ZETA PALERMO</div>
+        </div>
+
+    </div>
+
+    <!-- SEMIFINALI -->
+
+    <div class="round">
+
+        <h3>SEMIFINALI</h3>
+
+        <div class="match semi">
+            <div>VINCENTE Q1</div>
+            <div class="vs">VS</div>
+            <div>VINCENTE Q2</div>
+        </div>
+
+        <div class="match semi">
+            <div>VINCENTE Q3</div>
+            <div class="vs">VS</div>
+            <div>VINCENTE Q4</div>
+        </div>
+
+    </div>
+
+    <!-- FINALE -->
+
+    <div class="round">
+
+        <h3>FINALE</h3>
+
+        <div class="match final">
+            <div>VINCENTE SF1</div>
+            <div class="vs">VS</div>
+            <div>VINCENTE SF2</div>
+        </div>
+
+    </div>
+
 </div>
 
-<div class="playoff-card">
-<h3>Quarto 2</h3>
-<div class="playoff-match">
-MONS VF<br>🆚<br>GALACTICOS
-</div>
-<div class="playoff-next">➡️ Semifinale 1</div>
-</div>
-
-<div class="playoff-card">
-<h3>Quarto 3</h3>
-<div class="playoff-match">
-JAGUARS FC<br>🆚<br>PALERMO STARS
-</div>
-<div class="playoff-next">➡️ Semifinale 2</div>
-</div>
-
-<div class="playoff-card">
-<h3>Quarto 4</h3>
-<div class="playoff-match">
-TIGRES DE MONTERREY<br>🆚<br>ZETA PALERMO
-</div>
-<div class="playoff-next">➡️ Semifinale 2</div>
-</div>
-
-</div>
-
-<h3 style="text-align:center;color:#b8860b;margin-top:40px;">SEMIFINALI</h3>
-
-<div class="playoff-grid">
-
-<div class="playoff-card">
-<h3>Semifinale 1</h3>
-<div class="playoff-match">
-Vincente Q1<br>🆚<br>Vincente Q2
-</div>
-<div class="playoff-next">🏆 Finale</div>
-</div>
-
-<div class="playoff-card">
-<h3>Semifinale 2</h3>
-<div class="playoff-match">
-Vincente Q3<br>🆚<br>Vincente Q4
-</div>
-<div class="playoff-next">🏆 Finale</div>
-</div>
-
-</div>
-
-<h3 style="text-align:center;color:#b8860b;margin-top:40px;">FINALE</h3>
-
-<div class="playoff-card" style="max-width:450px;margin:auto;">
-<h3>🏆 FINALE</h3>
-<div class="playoff-match">
-Vincente SF1<br>🆚<br>Vincente SF2
-</div>
-</div>
-
-</section>	
+</section>
 
 <section id="Marcatori">
     <h2>⚽ Classifica Marcatori</h2>
