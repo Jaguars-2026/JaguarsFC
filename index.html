@@ -551,7 +551,26 @@ section{
     border:3px solid gold;
     box-shadow:0 0 40px gold;
 }
-	
+
+.team{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    justify-content:center;
+    padding:8px 0;
+}
+
+.team img{
+    width:42px;
+    height:42px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 8px rgba(255,215,0,.4));
+}
+
+.team span{
+    font-weight:700;
+    color:white;
+}
 </style>
 
 </head>
@@ -960,31 +979,20 @@ function chiudiGiocatore() {
         <h3>QUARTI DI FINALE</h3>
 
         <div class="match">
-            <div>ASD LEDA</div>
-            <div class="vs">VS</div>
-            <div>DICTATORES</div>
-        </div>
 
-        <div class="match">
-            <div>MONS VF</div>
-            <div class="vs">VS</div>
-            <div>GALACTICOS</div>
-        </div>
-
-        <div class="match">
-            <div>JAGUARS FC</div>
-            <div class="vs">VS</div>
-            <div>PALERMO STARS</div>
-        </div>
-
-        <div class="match">
-            <div>TIGRES DE MONTERREY</div>
-            <div class="vs">VS</div>
-            <div>ZETA PALERMO</div>
-        </div>
-
+    <div class="team">
+        <img src="leda.png" alt="ASD Leda">
+        <span>ASD LEDA</span>
     </div>
 
+    <div class="vs">VS</div>
+
+    <div class="team">
+        <img src="dictatores.png" alt="Dictatores">
+        <span>DICTATORES</span>
+    </div>
+
+</div>
     <!-- SEMIFINALI -->
 
     <div class="round">
