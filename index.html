@@ -592,6 +592,37 @@ section{
     font-weight:700;
     font-size:17px;
 }
+.playoff-slider{
+    display:flex;
+    gap:30px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding:20px 5px;
+}
+
+.playoff-slider::-webkit-scrollbar{
+    height:10px;
+}
+
+.playoff-slider::-webkit-scrollbar-thumb{
+    background:#d4af37;
+    border-radius:10px;
+}
+
+.playoff-slider::-webkit-scrollbar-track{
+    background:#222;
+}
+
+.playoff-stage{
+    min-width:360px;
+    flex:0 0 auto;
+}
+
+.playoff-stage h3{
+    text-align:center;
+    color:#d4af37;
+    margin-bottom:20px;
+}
 </style>
 
 </head>
@@ -992,7 +1023,7 @@ function chiudiGiocatore() {
 <h2 class="playoff-title">🏆 TABELLONE PLAYOFF</h2>
 <p class="playoff-subtitle">ROAD TO THE FINAL</p>
 
-<div class="bracket">
+<div class="playoff-slider">
 
     <!-- QUARTI -->
     <div class="round">
@@ -1064,6 +1095,68 @@ function chiudiGiocatore() {
         <img src="zeta.png" alt="Zeta Palermo">
         <span>ZETA PALERMO</span>
     </div>
+
+<!-- SEMIFINALI -->
+<div class="playoff-stage">
+
+<h3>SEMIFINALI</h3>
+
+<div class="match">
+
+<div class="team">
+<img src="tbd.png">
+<span>VINCENTE Q1</span>
+</div>
+
+<div class="vs">VS</div>
+
+<div class="team">
+<img src="tbd.png">
+<span>VINCENTE Q2</span>
+</div>
+
+</div>
+
+<div class="match">
+
+<div class="team">
+<img src="tbd.png">
+<span>VINCENTE Q3</span>
+</div>
+
+<div class="vs">VS</div>
+
+<div class="team">
+<img src="tbd.png">
+<span>VINCENTE Q4</span>
+</div>
+
+<!-- FINALE -->
+<div class="playoff-stage">
+
+<h3>FINALE</h3>
+
+<div class="match final">
+
+<div class="team">
+<img src="tbd.png">
+<span>VINCENTE SF1</span>
+</div>
+
+<div class="vs">VS</div>
+
+<div class="team">
+<img src="tbd.png">
+<span>VINCENTE SF2</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 </div>
